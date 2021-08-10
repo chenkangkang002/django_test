@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>啊啊啊啊啊啊啊啊</title>
+    <link rel="stylesheet" href="{% static "/layui/css/layui.css" %}">
+    <script src={% static "/layui/layui.js" %}></script>
+{% block script1 %}
+
+    {% endblock %}
+</head>
+<body>
+<ul class="layui-nav">
+  {% if request.session.is_login %}
+      <li class="layui-nav-item">
+        <a href="">控制台<span class="layui-badge">9</span></a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="">个人中心<span class="layui-badge-dot"></span></a>
+      </li>
+      <li class="layui-nav-item">
+        <a href=""><img src="" class="layui-nav-img">{{ request.session.user_name }}</a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:;">修改信息</a></dd>
+          <dd><a href="javascript:;">安全管理</a></dd>
+          <dd><a href="/u/logout/" class="btn">登出</a></dd>
+        </dl>
+      </li>
+</ul>
+      <h1>陈康的图书馆</h1>
+          {% block content %}
+
+          {% endblock %}
+  {% else %}
+      <li class="layui-nav-item">
+        <a href="/u/register/">注册</a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="/u/login/">登录</a>
+      </li>
+  {% endif %}
+
+</body>
+</html>

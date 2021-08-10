@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>接口自动化测试</title>
+    <link href="../static/layui.css" rel="stylesheet">
+    <script src="../static/js/layui.js"></script>
+    <script>
+        layui.use('tree', function() {
+            var tree = layui.tree,
+            layer = layui.layer,
+            data1 = {{ res }};
+            console.log(data1)
+            {#data1 = [{#}
+            {#    title: '封面新闻',#}
+            {#    id: 1,#}
+            {#    children: [{#}
+            {#        title: '内容管理系统',#}
+            {#        id: 1,#}
+            {#        children: [{#}
+            {#            title: '评论管理',#}
+            {#            id: 1#}
+            {#        },{#}
+            {#            title: '编辑发布库',#}
+            {#            id: 2#}
+            {#        }]#}
+            {#    },{#}
+            {#        title: '基础管理系统',#}
+            {#        id: 2#}
+            {#    },{#}
+            {#        title: '原创稿库系统',#}
+            {#        id: 3#}
+            {#    }]#}
+            {# },{#}
+            {#    title: '川观新闻',#}
+            {#    id: 2,#}
+            {#    children: [{#}
+            {#        title: '内容管理系统',#}
+            {#        id: 1#}
+            {#    },{#}
+            {#        title: '基础管理系统',#}
+            {#        id: 2#}
+            {#    }]#}
+            {# },{#}
+            {#    title: '辽宁日报',#}
+            {#    id: 3,#}
+            {#    children: [{#}
+            {#        title: '内容管理系统',#}
+            {#        id: 1#}
+            {#    },{#}
+            {#        title: '基础管理系统',#}
+            {#        id: 2#}
+            {#    }]#}
+            {# }];#}
+            //渲染
+            tree.render({
+                elem: '#test9',  //绑定元素
+                data: data1,
+                showCheckbox: true,
+                edit: ['add', 'update', 'del'], //操作节点的图标
+                click: function(obj){
+                    layer.msg(JSON.stringify(obj.data));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>接口自动化测试</h1>
+        <table id="table"></table>
+        <br/>
+    </div>
+    <li class="layui-nav-item  layui-nav-itemed">
+        <div id="test9" class="demo-tree demo-tree-box" style="width: 200px; height: 300px; overflow: scroll;"></div>
+    </li>
+
+</body>

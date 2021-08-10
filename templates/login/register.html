@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'login/js/captcha.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'login/css/register.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="col">
+        <form class="form-register" action="/u/register/" method="post">
+            {% if register_form.captcha.errors %}
+                <div class="alert-warning">{{ register_form.captcha.errors }}</div>
+            {% elif message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% csrf_token %}
+            <h3 class="text-center">欢迎注册</h3>
+            <div class="form-group">
+                {{ register_form.username.label_tag }}
+                {{ register_form.username }}
+            </div>
+            <div class="form-group">
+                {{ register_form.password1.label_tag }}
+                {{ register_form.password1 }}
+            </div>
+            <div class="form-group">
+                {{ register_form.password2.label_tag }}
+                {{ register_form.password2 }}
+            </div>
+            <div class="form-group">
+                {{ register_form.email.label_tag }}
+                {{ register_form.email }}
+            </div>
+            <div class="form-group">
+                {{ register_form.sex.label_tag }}
+                {{ register_form.sex }}
+            </div>
+            <div class="form-group">
+                {{ register_form.captcha.label_tag }}
+                {{ register_form.captcha }}
+                <a class="update_captcha" href="">看不清？？</a>
+            </div>
+        {#    {{ login_form }}#}
+            <div>
+                <a href="/u/login/" class="text-success"><ins>登录</ins></a>
+                <button type="submit" class="btn btn-primary float-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

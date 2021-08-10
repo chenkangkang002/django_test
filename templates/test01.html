@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //使用数组存储数据
+var agoods1=new Array('请选择','整机','数码产品','无线网','配件','耗材','软件','语音视频','办公设备','网络设备','机房布线','移动存储','通讯设备','显示设备','其他');
+var agoods2=new Array('--选择子类--','笔记本','笔记本配件','台式机','服务器','服务器配件','工作站','小型机','移动PC','平板电脑','网络电脑','数据相机','MP3','便携式DVD','数码学习机','数码摄像头','数码相机伴侣','MD播放器','滤镜镜头','多媒体硬盘播放','无线上网卡','无线网卡','CPU','内存','主板',' ','墨盒','纸张','操作系统', '办公软件','杀毒软件','视频会议','视频卡','投影机','打印机','扫描仪','交换机','集线器','测试仪','机房空调','闪存卡','移动硬盘','手机','电话机','液晶显示器','CRT显示器','游戏机','电池','音响');
+//声明一个arrayGoods对应，这个对象在new的时候指向一个数组，可通过arrayGoodsP['i']找到对应数组
+
+var arrayGoodsP=new Object();
+arrayGoodsP['1']=new Array('--选择子类--','15','16','17','18','19','20','21','22','23','24');
+arrayGoodsP['2']=new Array('--选择子类--','25','26','27','28','29','30','31','32','33');
+arrayGoodsP['3']=new Array('--选择子类--','34','35');
+arrayGoodsP['4']=new Array('--选择子类--','36','37','38');
+arrayGoodsP['5']=new Array('--选择子类--','40','41');
+arrayGoodsP['6']=new Array('--选择子类--','42','43','44');
+arrayGoodsP['7']=new Array('--选择子类--','45','46');
+arrayGoodsP['8']=new Array('--选择子类--','47','48','49');
+arrayGoodsP['9']=new Array('--选择子类--','50','51');
+arrayGoodsP['10']=new Array('--选择子类--','52','53');
+arrayGoodsP['11']=new Array('--选择子类--','54','55');
+arrayGoodsP['12']=new Array('--选择子类--','56','57');
+arrayGoodsP['13']=new Array('--选择子类--','58','59');
+arrayGoodsP['14']=new Array('--选择子类--','60','61','62');
+var result="";
+ //该方法实现了商品大类与子类的联动
+	function ss()
+	{
+
+		var sltp=document.getElementById("sltParent");
+		var slsb=document.getElementById("sltSub");
+		var sva=sltp.value;
+		slsb.options.length=1;
+		for(var i=0;i<arrayGoodsP[sva].length;i++)
+		{
+
+			if(i==25)
+			{
+				continue;
+			}
+			if(i!=0)
+			{
+			 slsb.options[i]=new Option(agoods2[Number(arrayGoodsP[sva][i])-14],arrayGoodsP[sva][i]);
+			}
+			else
+			{
+			 slsb.options[i]=new Option(agoods2[0],'0');
+			}
+		}
+	}
+	//ss2()和showSele()方法实现提交时，显示对应选择的商品名称与编号
+         function ss2()
+	{
+		var slsb2=document.getElementById("sltSub");
+		if(slsb2.value!="--选择子类--")
+		{
+			result=slsb2.value;
+		}
+	}
+	function showSele()
+	{
+		alert("您选择的商品为"+agoods2[Number(result)-14]+",商品的编号为"+result);
+	}
+</script>
+</head>
+<body>
+<form name="frmProduct">
+......<br>
+商品大类:
+<select name="sltParent" id="sltParent" onChange="ss()">
+    <option value="0">--选择大类--</option>
+    <option value="1">--整机--</option>
+    <option value="2">--数码产品--</option>
+    <option value="3">--无线网--</option>
+    <option value="4">--配件--</option>
+    <option value="5">--耗材--</option>
+    <option value="6">--软件--</option>
+    <option value="7">--语音视频--</option>
+    <option value="8">--办公设备--</option>
+    <option value="9">--网络设备--</option>
+    <option value="10">--机房布线--</option>
+    <option value="11">--移动存储--</option>
+    <option value="12">--通讯设备--</option>
+    <option value="13">--显示设备--</option>
+    <option value="14">--其他--</option>
+</select>
+
+商品子类:
+<select name="sltSub" id="sltSub" onChange="ss2()">
+<option value="">--选择子类--</option>
+</select>
+<br>......
+<input type="button" onClick="showSele()" value="提交"/>
+</form>
+</body>
+</html>
